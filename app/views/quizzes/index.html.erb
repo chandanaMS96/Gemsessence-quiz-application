@@ -1,0 +1,29 @@
+<% unless @quizzes.blank? %>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Status</th>
+    <th>No of questions</th>
+    <th>Edit</th>
+
+  </tr>
+<%  @quizzes.each do |quiz| %>
+
+  <tr>
+    <td><%= quiz.id %></td>
+    <td><%= quiz.title %></td>
+    <td><%= quiz.status %></td>
+    <td><%= quiz.no_of_questions %></td>
+    <td><%= button_to "Edit Quiz", edit_quiz_path(quiz.id), method: :get %></td>
+  </tr>
+  <% end %>
+</table>
+
+<% end %>
+
+<style type="text/css">
+	th,td{
+		padding: 20px;
+	}
+</style>

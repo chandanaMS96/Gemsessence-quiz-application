@@ -1,0 +1,27 @@
+<form action="/quizzes/<%= params[:id]%>" method="post" accept-charset="UTF-8">
+ <input type="hidden" name="_method" value="patch" />
+  <div>
+    <label for="title">Enter title</label>
+    <input id="title" name="title" type="text" value="<%= @quiz.title%>"/>
+</div>
+<div>
+    <label for="status">Select Status</label>
+    <select name="status" id="status">
+        <option value="live" <%= "selected" if  @quiz.status = "live"%> >live</option>
+        <option value="completed" <%= "selected" if  @quiz.status = "completed"%>>completed</option>
+        <option value="unpublished" <%= "selected" if  @quiz.status = "unpublished"%>>unpublished</option>
+    </select>
+</div>
+<div>
+    <label for="no_of_questions">Enter no of questions per quiz</label>
+    <input id="no_of_questions" name="no_of_questions" type="number" value="<%= @quiz.no_of_questions%>"/>
+</div>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div> <input name="commit" type="submit" value="Edit Quiz" data-disable-with="Enroll" /></div>
+   
+</form>
+<style>
+div{
+  margin:  10px;
+}
+</style>
