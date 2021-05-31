@@ -3,14 +3,21 @@
   <head>
     <title>QuizApp</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
+  <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= yield %>
+    <br>
+
+    <% if logged_in? %>
+      <%= button_to "Take Quiz", root_path, method: :get %>
+      <br>
+      <%= button_to "Logout", logout_path, method: :delete %>
+    <% end %>
   </body>
 </html>
