@@ -15,6 +15,10 @@ class AnswersController < ApplicationController
     end
   end
 
+  def new
+    @questions = Question.order(created_at: :desc)
+  end
+
   def update
     answer = Answer.find_by(id: params[:id])
     if answer.present?
@@ -24,19 +28,19 @@ class AnswersController < ApplicationController
         redirect_to new_answer_path
       end
     else
-       redirect_to new_answer_path
+      redirect_to new_answer_path
     end
   end
 
   def show
     @answer = Answer.find_by(id: params[:id])
- 
+
   end
 
   def destroy
     answer = Answer.find_by(id: params[:id])
     answer.destroy
-    redirect_to new_answer_path    
+    redirect_to new_answer_path
   end
 
   private

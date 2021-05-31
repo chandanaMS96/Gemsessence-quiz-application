@@ -1,0 +1,48 @@
+<form action="/questions" method="post" accept-charset="UTF-8">
+    <div>
+        <label for="body">Enter question</label>
+        <input id="body" name="body" type="text" />
+    </div>
+    <div>
+        <label for="quiz_id">Select Quiz </label>
+            <% unless @quizzes.blank? %>
+            <select name="quiz_id" id="quiz_id">
+            <% @quizzes.each do |quiz| %>
+            <option value="<%= quiz.id%>">
+                <%= quiz.title%>
+            </option>
+            <% end %>
+            <% else %>
+              <span id= "create_quiz">CREATE QUIZ FIRST</span>
+            <% end %>
+        </select>
+    </div>
+    <div>
+        <label for="timer">Enter time limit to ans in HH:MM format</label>
+        <input id="timer" name="timer" type="text" />
+    </div>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input name="commit" type="submit" value="Create question" data-disable-with="Enroll" />
+</form>
+
+<div>
+ <% if @quizzes.blank? %>
+<%= button_to "Create Quiz", new_quiz_path, method: :get %>
+<% end %>
+</div>
+<style>
+div{
+  margin:  10px;
+}
+#create_quiz{
+  color: red;
+}
+ select {
+        width: 150px;
+        margin: 10px;
+    }
+    select:focus {
+        min-width: 150px;
+        width: auto;
+    }
+</style>

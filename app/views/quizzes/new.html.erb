@@ -1,0 +1,26 @@
+<form action="/quizzes" method="post" accept-charset="UTF-8">
+	<div>
+    <label for="body">Enter title</label>
+    <input id="body" name="body" type="text" />
+</div>
+<div>
+    <label for="is_correct">Select Status</label>
+    <select name="is_correct" id="is_correct">
+        <option value="true">Correct</option>
+        <option value="false">Incorrect</option>
+    </select>
+</div>
+<div>
+    <label for="question_id">select question </label>
+    <input id="no_of_questions" name="no_of_questions" type="number" />
+</div>
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div> <input name="commit" type="submit" value="Create Quiz" data-disable-with="Enroll" /></div>
+   
+</form>
+<style>
+div{
+  margin:  10px;
+}
+</style>

@@ -1,0 +1,28 @@
+<% unless @questions.blank? %>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Answer ID</th>
+    <th>Timer</th>
+  </tr>
+<%  @questions.each do |quiz| %>
+
+  <tr>
+    <td><%= quiz.id %></td>
+    <td><%= quiz.body %></td>
+    <td><%= quiz.correct_answer_id %></td>
+    <td><%= quiz.timer %></td>
+
+
+  </tr>
+  <% end %>
+</table>
+
+<% end %>
+
+<style type="text/css">
+	th,td{
+		padding: 20px;
+	}
+</style>

@@ -17,20 +17,15 @@ class QuizzesController < ApplicationController
 
   def update
     quiz = Quiz.find_by(id: params[:id])
-    if quiz.present?
-      if quiz.update(require_quizzes_params)
+      if quiz && quiz.update(require_quizzes_params)
         redirect_to quizzes_path
       else
         redirect_to new_quiz_path
       end
-    else
-       redirect_to new_quiz_path
-    end
   end
 
-  def show
+  def edit
     @quiz = Quiz.find_by(id: params[:id])
- 
   end
 
   def destroy

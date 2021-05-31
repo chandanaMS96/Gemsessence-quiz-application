@@ -1,5 +1,4 @@
 class QuestionsController < ApplicationController
-
   include QuestionsHelper
 
   def index
@@ -7,6 +6,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    params[:timer] = get_timestamp_timer(params[:timer])
     question = Question.new(require_questions_params)
     if question.valid?
       question.save
@@ -14,6 +14,10 @@ class QuestionsController < ApplicationController
     else
       redirect_to new_question_path
     end
+  end
+
+  def new
+    @quizzes = Quiz.order(created_at: :desc)
   end
 
   def update
