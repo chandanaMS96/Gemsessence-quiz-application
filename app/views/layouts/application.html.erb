@@ -14,9 +14,10 @@
     <%= yield %>
     <br>
 
-    <% if logged_in? %>
-      <%= button_to "Take Quiz", root_path, method: :get %>
+    <% if logged_in? && controller_name == "users"%>
+      <%= button_to "Select Quiz", quizzes_path, method: :get %>
       <br>
+      <% elsif  logged_in? %>
       <%= button_to "Logout", logout_path, method: :delete %>
     <% end %>
   </body>

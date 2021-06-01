@@ -1,13 +1,14 @@
 <form action="/quizzes" method="post" accept-charset="UTF-8">
 	<div>
-    <label for="body">Enter title</label>
-    <input id="body" name="body" type="text" />
+    <label for="title">Enter title</label>
+    <input id="title" name="title" type="text" />
 </div>
 <div>
-    <label for="is_correct">Select Status</label>
-    <select name="is_correct" id="is_correct">
-        <option value="true">Correct</option>
-        <option value="false">Incorrect</option>
+    <label for="status">Select Status</label>
+    <select name="status" id="status">
+        <option value="live">Live</option>
+        <option value="completed">completed</option>
+        <option value="unpublished">unpublished</option>
     </select>
 </div>
 <div>

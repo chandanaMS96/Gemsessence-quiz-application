@@ -1,20 +1,19 @@
 <form action="/answers" method="post" accept-charset="UTF-8">
 	<div>
     <label for="body">Enter Answer</label>
-    <input id="title" name="title" type="text" />
+    <input id="body" name="body" type="text" />
 </div>
 <div>
-    <label for="status">Select Status</label>
-    <select name="status" id="status">
-        <option value="live">live</option>
-        <option value="completed">completed</option>
-        <option value="unpublished">unpublished</option>
+    <label for="is_correct">Select Status</label>
+    <select name="is_correct" id="is_correct">
+        <option value="true">Correct</option>
+        <option value="false">Incorrect</option>
     </select>
 </div>
 <div>
         <label for="question_id">Select Question </label>
             <% unless @questions.blank? %>
-            <select name="quiz_id" id="quiz_id">
+            <select name="question_id" id="question_id">
             <% @questions.each do |question| %>
             <option value="<%= question.id%>">
                 <%= question.body%>
@@ -27,7 +26,7 @@
     </div>
 
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <div> <input name="commit" type="submit" value="Create Quiz" data-disable-with="Enroll" /></div>
+    <div> <input name="commit" type="submit" value="Create Answer" data-disable-with="Enroll" /></div>
    
 </form>
 <style>

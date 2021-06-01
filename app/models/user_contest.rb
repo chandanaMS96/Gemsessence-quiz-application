@@ -1,0 +1,2 @@
+class UserContest < ApplicationRecord
+end

@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
     answer = Answer.new(require_answers_params)
     if answer.valid?
       answer.save
-      redirect_to answers_path
+      redirect_to questions_path
     else
       redirect_to new_answer_path
     end
@@ -23,7 +23,7 @@ class AnswersController < ApplicationController
     answer = Answer.find_by(id: params[:id])
     if answer.present?
       if answer.update(require_answers_params)
-        redirect_to answers_path
+        redirect_to questions_path
       else
         redirect_to new_answer_path
       end
@@ -46,6 +46,6 @@ class AnswersController < ApplicationController
   private
 
   def require_answers_params
-    params.permit(:body, :answer_id, :is_correct)
+    params.permit(:body, :question_id, :is_correct)
   end
 end
