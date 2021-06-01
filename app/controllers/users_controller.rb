@@ -2,13 +2,15 @@ class UsersController < ApplicationController
   include UsersHelper
   include ApplicationHelper
 
-  before_action :current_user, :logged_in?
-
   def create
     @user = @user || User.find_by(email: params[:email]) || User.create(user_params)
     if @user.valid?
       session[:user_id] = @user.id
-      redirect_to root_path
+      if @user.role == "user"
+        redirect_to root_path
+      else
+        redirect_to quizzes_path
+      end
     else
       redirect_to new_user_path, notice: "Try again"
     end

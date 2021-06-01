@@ -1,10 +1,10 @@
 class QuizzesController < ApplicationController
   include QuizzesHelper
   include ApplicationHelper
+  before_action :is_admin?, except: [:index]
 
-  before_action :current_user, :logged_in?, only: [:index]
   def index
-    @quizzes = Quiz.order(created_at: :desc)
+     @quizzes = Quiz.order(created_at: :desc)
   end
 
   def create
@@ -34,19 +34,6 @@ class QuizzesController < ApplicationController
     quiz = Quiz.find_by(id: params[:id])
     quiz.destroy
     redirect_to new_quiz_path    
-  end
-
-  def take_quiz
-    puts "================="
-    quiz = Quiz.find_by(id: params[:id])
-    question_ans = quiz.questions.joins(:answers)
-    @ques_ans  = []
-    puts question_ans,"00000000000000"
-
-    question_ans.each do |ques|
-    @ques_ans << construct_quiz_obj(ques)
-    end
- puts  @ques_ans
   end
 
   private

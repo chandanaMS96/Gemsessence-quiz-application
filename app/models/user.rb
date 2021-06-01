@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+	has_many :user_contests, dependent: :destroy
   validates :name, presence: true, length: { maximum: 20,  message: "title should have maximum 20 char"}
   validates :name, uniqueness: { message: "title %{value} already exists"}
   validates :phone_num, presence: true, length: { minimum: 10,  message: "title should have minimun 10 numbers"}

@@ -1,0 +1,26 @@
+<form action="/submit-quiz/<%= params[:id]%>" method="post" accept-charset="UTF-8">
+    <% unless @ques_ans.blank? %>
+    <% @ques_ans.each_with_index do |question, index| %>
+    <div>
+    </div>
+    <% unless question[:answers].blank? %>
+    <%= question[:body]%>
+        <% question[:answers].each do |ans| %>
+      <input type="hidden" name="answers[<%= index %>][question_id]" value="<%= question[:id] %>">
+      <input type="hidden" name="answers[<%= index %>][quiz_id]" value="<%= question[:quiz_id] %>">
+        <input type="hidden" name="answers[<%= index %>][<%= ans[:id] %>]" value="<%= ans[:is_correct] %>">
+        <div>
+          <span><%=ans[:body] %></span><input type="checkbox"  name="answers[<%= index %>][answer_id]" value="<%= ans[:id]%>">
+        </div>
+        <% end %>
+    <% end %>
+    <% end %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div> <input name="commit" type="submit" value="Submit Quiz" data-disable-with="Enroll" /></div>
+    <% end %>
+</form>
+<style>
+div {
+    margin: 10px;
+}
+</style>

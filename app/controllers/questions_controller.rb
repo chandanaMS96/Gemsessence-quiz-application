@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   include QuestionsHelper
 
+  before_action  :current_user,:logged_in? ,except: [:new]
   def index
     @questions = Question.order(created_at: :desc)
   end

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
 root :to => "users#landing_page"
 resources :users, only: [:create, :new]
 delete '/logout' => 'users#logout'
-get '/take-quiz/:id' => 'quizzes#take_quiz'
+get '/take-quiz/:id' => 'user_contests#take_quiz'
+get '/dashboard' => 'user_contests#dashboard'
+post '/submit-quiz/:id' => 'user_contests#submit_quiz'
+
+
 
 end

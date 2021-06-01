@@ -1,0 +1,22 @@
+<div>
+  
+  <table style="width:50%">
+    <% unless @quiz_details.blank? %>
+
+  <tr>
+    <th>Quiz Name</th>
+    <th>Total Questions</th>
+    <th>Correct answers</th>
+  </tr>
+  <% @quiz_details.each do |quiz| %>
+  <tr>
+
+    <td><%= quiz[:quiz_name]%></td>
+    <td><%= quiz[:total_questions]%></td>
+    <td><%= quiz[:correct_ans]%></td>
+  </tr>
+  <% end %>
+  <% end %>
+
+</div>
+
